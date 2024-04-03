@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { ThemeProvider } from "@mui/material/styles";
+import { Paper } from "@mui/material";
+import appTheme from "./Theme/ThemeContext";
+import HeroSection from "./Components/HeroSection/HeroSection";
+import Navbar from "./Components/Navbar/Navbar";
+import Services from "./Components/Services/Services";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Paper
+      className='App'
+      sx={{
+        width: 1,
+        height: 1,
+        background: "transparent",
+        position: "relative",
+      }}
+    >
+      <ThemeProvider theme={appTheme}>
+        <Navbar />
+        <HeroSection />
+        <Services />
+      </ThemeProvider>
+    </Paper>
   );
 }
 
