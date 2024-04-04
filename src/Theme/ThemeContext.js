@@ -1,6 +1,6 @@
 import { createTheme } from "@mui/material/styles";
 
-import { palettes } from "./palettes.js";
+import { palette } from "./palettes.js";
 
 import breakpoints, {
   xxs,
@@ -16,7 +16,7 @@ import breakpoints, {
 export const fonts = { playfair: '"Playfair Display", serif' };
 
 const appTheme = createTheme({
-  // palette: palettes,
+  palette: palette,
 
   breakpoints: breakpoints,
 
@@ -46,6 +46,19 @@ const appTheme = createTheme({
       },
       variants: [],
     },
+    MuiButton: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          fontFamily: fonts.playfair,
+          fontWeight: 700,
+        },
+      },
+      variants: [],
+    },
 
     MuiTypography: {
       defaultProps: {
@@ -64,19 +77,19 @@ appTheme.typography.heading1 = {
   fontFamily: fonts.playfair,
   textAlign: "left",
   fontWeight: 700,
-  fontSize: "1.5rem",
+  fontSize: "50px",
   [md]: { fontSize: "90px" },
 };
 appTheme.typography.heading2 = {
   fontFamily: fonts.playfair,
-  // textAlign: "left",
+  color: "#2F2E41",
   fontWeight: 400,
-  fontSize: "1.5rem",
-  [md]: { fontSize: "40px" },
+  fontSize: "30px",
+  [md]: { fontSize: "50px" },
 };
 appTheme.typography.heading3 = {
   fontFamily: fonts.playfair,
-  // textAlign: "left",
+  color: "#2F2E41",
   fontWeight: 500,
   fontSize: "1.5rem",
   [md]: { fontSize: "30px" },
@@ -85,7 +98,7 @@ appTheme.typography.subHeading = {
   fontFamily: fonts.playfair,
   textAlign: "left",
   fontWeight: 500,
-  fontSize: "1.5rem",
+  fontSize: "20px",
   [md]: { fontSize: "25px" },
 };
 appTheme.typography.p = {
@@ -93,8 +106,17 @@ appTheme.typography.p = {
   textAlign: "left",
   fontWeight: 300,
   lineHeight: 2,
+  color: "#2F2E41",
   fontSize: "16px",
   [md]: { fontSize: "18px" },
+};
+appTheme.typography.label = {
+  fontFamily: fonts.playfair,
+  textAlign: "left",
+  fontWeight: 500,
+  color: "#2F2E41",
+  fontSize: "16px",
+  [md]: { fontSize: "20px" },
 };
 
 export default appTheme;

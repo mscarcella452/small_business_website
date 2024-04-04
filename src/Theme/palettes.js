@@ -1,29 +1,29 @@
 const palette = {
-  background: {
-    // primary:
-    // secondary:
+  // background: {
+  //   // primary:
+  //   // secondary:
 
-    fontColor: {
-      // primary:
-      // secondary:
-      // white:
-      // black:
-    },
-  },
+  //   // fontColor: {
+  //   //   // primary:
+  //   //   // secondary:
+  //   //   // white:
+  //   //   // black:
+  //   // },
+  // },
   primary: {
     // light: will be calculated from palette.primary.main,
-    // main:
-    // fontColor:
+    main: "#C55333",
+    // fontColor: "#2F2E41",
   },
   secondary: {
     // light: will be calculated from palette.primary.main,
-    // main:
+    main: "#2F2E41",
     // fontColor:
   },
-  info: {
-    // main:
-    // fontColor:
-  },
+  // info: {
+  //   // main:
+  //   // fontColor:
+  // },
 };
 
 export { palette };

@@ -5,6 +5,7 @@ import appTheme from "./Theme/ThemeContext";
 import HeroSection from "./Components/HeroSection/HeroSection";
 import Navbar from "./Components/Navbar/Navbar";
 import Services from "./Components/Services/Services";
+import Hours from "./Components/Hours/Hours";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Navbar />
         <HeroSection />
         <Services />
+        <Hours />
       </ThemeProvider>
     </Paper>
   );

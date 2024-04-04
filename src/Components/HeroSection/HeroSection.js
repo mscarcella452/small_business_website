@@ -38,44 +38,44 @@ function HeroSection() {
           bottom: 0,
           zIndex: -1,
           backgroundColor: "#000",
-          opacity: 0.75,
+          opacity: 0.6,
         },
       }}
     >
       <Container
         className='flexColumn'
-        sx={{ width: 1, height: 1, border: 1, gap: 4, zIndex: 2 }}
+        sx={{ width: 1, height: 1, border: 0, gap: 4, zIndex: 2 }}
       >
         <Typography
           variant='heading1'
-          color='#fff'
-          sx={{
-            textShadow:
-              "-1px -1px 0 #F2F2F2, 1px -1px 0 #F2F2F2, -1px 1px 0 #F2F2F2, 1px 1px 0 #F2F2F2",
-          }}
+          color='#FAF0E6'
+          // sx={{
+          //   textShadow:
+          //     "-1px -1px 0 #F2F2F2, 1px -1px 0 #F2F2F2, -1px 1px 0 #F2F2F2, 1px 1px 0 #F2F2F2",
+          // }}
         >
           Thomas Mitchell Clothier
         </Typography>
-        <Typography variant='subHeading' color='#fff'>
+        <Typography variant='heading3' color='#fff'>
           Crafting Elegance Stitch by Stitch: Your Tailoring Destination
         </Typography>
 
         <Button
           sx={{
-            backgroundColor: "teal",
+            backgroundColor: "secondary.main",
             color: "#fff",
             borderRadius: "5px",
             width: 1,
             maxWidth: 400,
             padding: 1,
-            boxShadow: 2,
+            // boxShadow: 2,
           }}
         >
           Make an appointment today!
         </Button>
-        <Typography variant='p' color='#fff'>
+        {/* <Typography variant='p' color='#fff'>
           1 Broadway, New York, NY, USA
-        </Typography>
+        </Typography> */}
       </Container>
     </Box>
   );

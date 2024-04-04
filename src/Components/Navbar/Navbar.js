@@ -46,13 +46,12 @@ function Navbar() {
         </Typography>
         <Button
           sx={{
-            backgroundColor: "teal",
+            backgroundColor: "#C55333",
             color: "#fff",
             borderRadius: "5px",
-            width: 1,
-            maxWidth: 400,
+
             padding: 1,
-            boxShadow: 2,
+            // boxShadow: 2,
           }}
         >
           Contact Us
