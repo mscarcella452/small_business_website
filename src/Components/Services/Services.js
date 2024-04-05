@@ -17,7 +17,7 @@ function Services() {
       <Typography
         className='flexRow'
         variant='heading2'
-        sx={{ border: 0, height: 150 }}
+        sx={{ border: 0, height: 125, width: 1, backgroundColor: "#FAF0E6" }}
       >
         Our Services
       </Typography>

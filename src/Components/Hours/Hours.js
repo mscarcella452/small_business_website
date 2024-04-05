@@ -1,6 +1,9 @@
 // import React from "react";
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Container, Typography, IconButton, Button } from "@mui/material";
 import { hoursBackgroundImage, hoursScheduale } from "./data";
+
+import EventIcon from "@mui/icons-material/Event";
+import { BusinessTwoTone } from "@mui/icons-material";
 
 function Hours() {
   return (
@@ -61,7 +64,7 @@ function Hours() {
         </Box>
         <Box
           className='flexColumn'
-          sx={{ width: 1, maxWidth: 500, padding: 1 }}
+          sx={{ width: 1, maxWidth: 550, padding: 1 }}
         >
           {hoursScheduale.map(({ day, hours, color }, index) => (
             <Box
@@ -74,11 +77,33 @@ function Hours() {
                 padding: 2,
               }}
             >
-              {[day, hours].map(scheduale => (
-                <Typography variant='label' color={color}>
-                  {scheduale}
+              <Typography variant='label' color={color}>
+                {day}
+              </Typography>
+              <Box className='flexRow' gap={2}>
+                <Typography
+                  variant='label'
+                  sx={{
+                    fontSize: (index === 2 || index === 6) && { xxs: 14 },
+                    color:
+                      index === 2 || index === 6 ? "secondary.light" : color,
+                  }}
+                >
+                  {hours}
                 </Typography>
-              ))}
+                {(index === 2 || index === 6) && (
+                  <Button
+                    sx={{
+                      backgroundColor: "primary.main",
+                      color: "#fff",
+                      borderRadius: 1,
+                      padding: 1,
+                    }}
+                  >
+                    Book
+                  </Button>
+                )}
+              </Box>
             </Box>
           ))}
         </Box>

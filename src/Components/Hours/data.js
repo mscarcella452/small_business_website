@@ -4,9 +4,9 @@ export const hoursBackgroundImage =
 export const hoursScheduale = [
   { day: "Monday", hours: "Closed", color: "secondary.light" },
   { day: "Tuesday", hours: "9am - 6pm", color: "#FAF0E6" },
-  { day: "Wednesday", hours: "By appointment only", color: "secondary.light" },
+  { day: "Wednesday", hours: "*By appointment only", color: "#FAF0E6" },
   { day: "Thursday", hours: "9am - 6pm", color: "#FAF0E6" },
   { day: "Friday", hours: "9am - 6pm", color: "#FAF0E6" },
   { day: "Saturday", hours: "9am - 6pm", color: "#FAF0E6" },
-  { day: "Sunday", hours: "By appointment only", color: "secondary.light" },
+  { day: "Sunday", hours: "*By appointment only", color: "#FAF0E6" },
 ];

@@ -12,7 +12,7 @@ function Navbar() {
         height: 70,
         width: 1,
         padding: 2,
-        backgroundColor: "#000",
+        backgroundColor: "secondary.main",
         justifyContent: "space-between",
         position: "sticky",
         top: 0,
