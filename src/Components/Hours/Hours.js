@@ -1,22 +1,29 @@
 // import React from "react";
-import { Box, Container, Typography, IconButton, Button } from "@mui/material";
+import { Box, Container, Typography, Button } from "@mui/material";
 import { hoursBackgroundImage, hoursScheduale } from "./data";
-
-import EventIcon from "@mui/icons-material/Event";
-import { BusinessTwoTone } from "@mui/icons-material";
+import { PageDiv } from "../../Helpers/HelperComponents";
 
 function Hours() {
   return (
-    <Box
+    <PageDiv
       id='hours'
-      className='flexColumn'
       sx={{
-        height: 1,
-        width: 1,
-        padding: { xxs: 2, md: 4 },
         position: "relative",
         overflow: "hidden",
         "&:before": {
+          content: "''",
+          position: "absolute",
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+          backgroundImage: `url(${hoursBackgroundImage})`,
+          backgroundSize: "cover",
+          backgroundPosition: "top center",
+          backgroundRepeat: "no-repeat",
+          zIndex: -1,
+        },
+        "&:after": {
           backgroundColor: "secondary.dark",
           content: "''",
           position: "absolute",
@@ -25,29 +32,25 @@ function Hours() {
           left: 0,
           bottom: 0,
           opacity: 0.95,
+          zIndex: -1,
         },
-
-        backgroundImage: `url(${hoursBackgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "top center",
-        backgroundRepeat: "no-repeat",
       }}
     >
       <Container
-        disableGutters
         maxWidth={false}
         sx={{
+          border: 1,
           width: 1,
           height: 1,
           display: "grid",
           gridTemplateColumns: { xxs: "1fr", md: ".75fr 1fr", lg: "1fr 1fr" },
           gridTemplateRows: { xxs: "auto 1fr", md: "1fr" },
           justifyItems: "center",
-          zIndex: 1,
+          zIndex: 10,
           gap: { xxs: 2, md: 3 },
         }}
       >
-        <Box className='flexColumn' sx={{ width: 1, gap: 2, padding: 1 }}>
+        <Box className='flexColumn' sx={{ width: 1, gap: 2 }}>
           <Typography
             variant='heading1'
             color={{ xxs: "#FAF0E6", md: "secondary.light" }}
@@ -62,10 +65,7 @@ function Hours() {
             1 Broadway, New York, NY, USA
           </Typography>
         </Box>
-        <Box
-          className='flexColumn'
-          sx={{ width: 1, maxWidth: 550, padding: 1 }}
-        >
+        <Box className='flexColumn' sx={{ width: 1, maxWidth: 550 }}>
           {hoursScheduale.map(({ day, hours, color }, index) => (
             <Box
               className='flexRow'
@@ -108,7 +108,7 @@ function Hours() {
           ))}
         </Box>
       </Container>
-    </Box>
+    </PageDiv>
   );
 }
 

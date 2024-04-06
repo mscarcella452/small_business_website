@@ -41,11 +41,22 @@ const appTheme = createTheme({
           alignItems: "center",
           height: "100%",
           width: "100%",
-          overflow: "hidden",
+          // overflow: "hidden",
         },
       },
       variants: [],
     },
+    MuiPageDiv: {
+      styleOverrides: {
+        // Name of the slot
+        root: {
+          backgroundColor: "yellow",
+          padding: 5,
+        },
+      },
+      variants: [],
+    },
+
     MuiButton: {
       styleOverrides: {
         // Name of the slot

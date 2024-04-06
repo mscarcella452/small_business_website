@@ -7,54 +7,34 @@ import Navbar from "./Components/Navbar/Navbar";
 import Services from "./Components/Services/Services";
 import Hours from "./Components/Hours/Hours";
 import AboutUs from "./Components/AboutUs/AboutUs";
+import MissionStatement from "./Components/MissionStatement/MissionStatement";
+import CustomerReviews from "./Components/CustomerReviews/CustomerReviews";
 
 function App() {
   return (
-    <Paper
-      className='App'
-      sx={{
-        width: 1,
-        height: 1,
-        background: "transparent",
-        position: "relative",
-      }}
-    >
-      <ThemeProvider theme={appTheme}>
-        <Navbar />
-        <HeroSection />
+    <ThemeProvider theme={appTheme}>
+      <Paper
+        className='App flexColumn'
+        sx={{
+          width: 1,
+          height: 1,
+          background: "transparent",
+          position: "relative",
+          gap: { xxs: 2, sm: 4, md: 6 },
+        }}
+      >
+        <Box sx={{ width: 1 }}>
+          <Navbar />
+          <HeroSection />
+        </Box>
 
-        <Container
-          className='flexColumn'
-          sx={{
-            gap: 4,
-            width: 1,
-            // minHeight: 400,
-            padding: 3,
-            marginTop: 4,
-          }}
-        >
-          {/* <Typography variant='heading2' sx={{ width: 1, textAlign: "left" }}>
-            Our Mission
-          </Typography> */}
-          <Typography
-            className='flexRow'
-            variant='label'
-            textAlign='left'
-            lineHeight={2.5}
-          >
-            At Thomas Mitchell Clothier, our mission is simple: to provide
-            unparalleled quality and service to every customer. We believe in
-            the power of well-crafted clothing to make a statement and boost
-            confidence. Our values of integrity, creativity, and professionalism
-            guide every stitch we make.
-          </Typography>
-        </Container>
-
+        <MissionStatement />
         <Services />
         <Hours />
         <AboutUs />
-      </ThemeProvider>
-    </Paper>
+        <CustomerReviews />
+      </Paper>
+    </ThemeProvider>
   );
 }
 

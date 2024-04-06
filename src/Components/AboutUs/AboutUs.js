@@ -1,6 +1,7 @@
 import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import { content } from "./data";
+import { PageDiv, BoxImg } from "../../Helpers/HelperComponents";
 
 const aboutBackgroundImage1 =
   "https://archello.s3.eu-central-1.amazonaws.com/images/2022/05/11/pair-rio-bravo-tailor-shop-shops-archello.1652227592.488.jpg";
@@ -11,29 +12,19 @@ function AboutUs() {
   const { aboutContent, storyContent } = content;
 
   return (
-    <Container
-      //   disableGutters
-      maxWidth={false}
+    <PageDiv
       className='flexColumn'
-      sx={{
-        height: 1,
-        width: 1,
-        padding: { xxs: "2rem 0", sm: 4 },
-        marginTop: 4,
-        gap: { xxs: 2, lg: 4 },
-
-        // border: 0,
-      }}
+      sx={{ border: 0, gap: { xxs: 2, sm: 3, lg: 4 } }}
     >
-      <Box
+      <Container
         sx={{
           width: 1,
-          //   border: 0,
+          // border: 1,
           display: "grid",
-          gridTemplateColumns: { xxs: "1fr", lg: "1fr .75fr" },
+          gridTemplateColumns: { xxs: "1fr", md: "1fr .75fr" },
           gridTemplateRows: { xxs: "auto 1fr", lg: "1fr" },
           justifyItems: "center",
-          gap: { xxs: 2, lg: 4 },
+          gap: "inherit",
         }}
       >
         <Box
@@ -41,8 +32,7 @@ function AboutUs() {
           sx={{
             width: 1,
             // border: 0,
-            gap: 4,
-            padding: 2,
+            gap: "inherit",
           }}
         >
           <Typography
@@ -60,29 +50,18 @@ function AboutUs() {
             <Typography variant='p'>{description}</Typography>
           ))}
         </Box>
-        <Box
-          component='img'
-          src={aboutBackgroundImage1}
-          alt='Tailor Store'
-          sx={{
-            width: 1,
-            maxWidth: { xxs: 1, sm: 750, lg: 1 },
-            height: { xxs: 350, lg: 1 },
-            borderRadius: { xxs: 0, sm: 2 },
-            objectFit: "cover", // Ensure image covers the entire space
-            objectPosition: "center", // Center image within the container
-          }}
-        />
-      </Box>
-      <Box className='flexColumn' sx={{ gap: 4, padding: 2 }}>
+
+        <BoxImg src={aboutBackgroundImage1} alt='Tailor Store' />
+      </Container>
+      <Container sx={{ flexDirection: "column", gap: "inherit", border: 0 }}>
         <Typography variant='heading3' sx={{ width: 1, textAlign: "left" }}>
           {storyContent.title}
         </Typography>
         {storyContent.content.map(description => (
           <Typography variant='p'>{description}</Typography>
         ))}
-      </Box>
-    </Container>
+      </Container>
+    </PageDiv>
   );
 }
 

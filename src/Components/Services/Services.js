@@ -2,18 +2,11 @@ import React from "react";
 import { Box, Container, Typography } from "@mui/material";
 import Grid from "@mui/material/Unstable_Grid2"; // Grid version 2
 import { services } from "./data";
+import { PageDiv } from "../../Helpers/HelperComponents";
 
 function Services() {
   return (
-    <Box
-      className='flexColumn'
-      sx={{
-        height: 1,
-        width: 1,
-        padding: { xxs: "2rem 0", sm: 4 },
-        gap: 4,
-      }}
-    >
+    <PageDiv className='flexColumn' sx={{ gap: 4 }}>
       <Typography
         className='flexRow'
         variant='heading2'
@@ -68,7 +61,7 @@ function Services() {
           ))}
         </Grid>
       </Container>
-    </Box>
+    </PageDiv>
   );
 }
 
