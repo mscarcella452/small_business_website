@@ -25,10 +25,7 @@ function HeroSection() {
             right: 0,
             bottom: 0,
             zIndex: -2,
-            backgroundImage: `url(${dummyBackground})`,
-            backgroundSize: "cover",
-            backgroundPosition: "top center",
-            backgroundRepeat: "no-repeat",
+            background: `url(${dummyBackground}) top center / cover no-repeat`,
           },
           "&:after": {
             content: "''",

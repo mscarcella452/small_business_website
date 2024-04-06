@@ -17,10 +17,7 @@ function Hours() {
           right: 0,
           left: 0,
           bottom: 0,
-          backgroundImage: `url(${hoursBackgroundImage})`,
-          backgroundSize: "cover",
-          backgroundPosition: "top center",
-          backgroundRepeat: "no-repeat",
+          background: `url(${hoursBackgroundImage}) top center / cover no-repeat`,
           zIndex: -1,
         },
         "&:after": {
@@ -39,7 +36,6 @@ function Hours() {
       <Container
         maxWidth={false}
         sx={{
-          border: 1,
           width: 1,
           height: 1,
           display: "grid",

@@ -14,7 +14,7 @@ function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <Paper
-        className='App flexColumn'
+        className='flexColumn'
         sx={{
           width: 1,
           height: 1,
@@ -23,10 +23,8 @@ function App() {
           gap: { xxs: 2, sm: 4, md: 6 },
         }}
       >
-        <Box sx={{ width: 1 }}>
-          <Navbar />
-          <HeroSection />
-        </Box>
+        <Navbar />
+        <HeroSection />
 
         <MissionStatement />
         <Services />
