@@ -9,28 +9,32 @@ import Hours from "./Components/Hours/Hours";
 import AboutUs from "./Components/AboutUs/AboutUs";
 import MissionStatement from "./Components/MissionStatement/MissionStatement";
 import CustomerReviews from "./Components/CustomerReviews/CustomerReviews";
+import ContactUs from "./Components/ContactUs/ContactUs";
 
 function App() {
   return (
     <ThemeProvider theme={appTheme}>
       <Paper
-        className='flexColumn'
         sx={{
           width: 1,
           height: 1,
           background: "transparent",
           position: "relative",
-          gap: { xxs: 2, sm: 4, md: 6 },
         }}
       >
         <Navbar />
-        <HeroSection />
-
-        <MissionStatement />
-        <Services />
-        <Hours />
-        <AboutUs />
-        <CustomerReviews />
+        <Box
+          className='flexColumn'
+          sx={{ width: 1, gap: { xxs: 2, sm: 4, md: 6 } }}
+        >
+          <HeroSection />
+          <MissionStatement />
+          <Services />
+          <Hours />
+          <AboutUs />
+          <CustomerReviews />
+          <ContactUs />
+        </Box>
       </Paper>
     </ThemeProvider>
   );
