@@ -80,14 +80,14 @@ function Hours() {
                 <Typography
                   variant='label'
                   sx={{
-                    fontSize: (index === 2 || index === 6) && { xxs: 14 },
+                    fontSize: (index === 0 || index === 6) && { xxs: 14 },
                     color:
-                      index === 2 || index === 6 ? "secondary.light" : color,
+                      index === 0 || index === 6 ? "secondary.light" : color,
                   }}
                 >
                   {hours}
                 </Typography>
-                {(index === 2 || index === 6) && (
+                {(index === 0 || index === 6) && (
                   <Button
                     sx={{
                       backgroundColor: "primary.main",

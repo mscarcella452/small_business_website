@@ -23,7 +23,7 @@ const useEmailInput = () => {
     return true;
   };
 
-  return [isEmailValid, emailRef, error];
+  return [emailRef, isEmailValid, error];
 };
 
 export default useEmailInput;

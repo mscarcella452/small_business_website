@@ -1,57 +1,140 @@
 import React from "react";
-import { Paper, Box, Typography, Container } from "@mui/material";
+import { Paper, Box, Typography, Container, Button } from "@mui/material";
 import { PageDiv } from "../../Helpers/HelperComponents";
 import ContactForm from "./ContactForm/ContactForm";
+import PlaceIcon from "@mui/icons-material/Place";
+import PhoneIcon from "@mui/icons-material/Phone";
+import EmailIcon from "@mui/icons-material/Email";
 
 const contactInfo = [
-  { title: "Address", content: "1 Broadway, New York, NY, USA" },
-  { title: "Phone", content: "+1 234 567 890" },
-  { title: "Email", content: "TMC@gmail.com" },
+  {
+    icon: <PlaceIcon sx={{ height: 1, width: 1 }} />,
+    content: "1 Broadway, New York, NY, USA",
+  },
+  {
+    icon: <PhoneIcon sx={{ height: 1, width: 1 }} />,
+    content: "+1 234 567 890",
+  },
+  {
+    icon: <EmailIcon sx={{ height: 1, width: 1 }} />,
+    content: "TMC@gmail.com",
+  },
 ];
+
+// const contactInfo = [
+//   "1 Broadway, New York, NY, USA",
+//   "+1 234 567 890",
+//   "TMC@gmail.com",
+// ];
+// FAF0E6;
+
+const companyInfo = [
+  {
+    title: "Location:",
+    info: ["8721 M Central Avenue, Los Angeles, CA 90036"],
+  },
+  {
+    title: "Contact:",
+    info: ["hello@yourdomain.com", "+12 9 8765 4321"],
+  },
+  {
+    title: "Hours:",
+    info: [
+      "Sun – Mon: *by appt. only",
+      "Tuesday: Closed",
+      "Wed – Sat: 9:00 AM - 6:00 PM",
+    ],
+  },
+];
+
+const wallPaper = "https://wallpaperaccess.com/full/4870403.jpg";
 
 function ContactUs() {
   return (
-    <PageDiv>
-      <Container
+    <Box className='flexColumn' gap={5}>
+      <Box
         className='flexColumn'
+        gap={1.5}
         sx={{
-          display: "grid",
-          gridTemplateColumns: { xxs: "1fr", md: "1fr 1fr" },
-          gridTemplateRows: "auto",
-          gap: 4,
-          // border: 1,
+          border: 0,
+          height: 400,
+          position: "relative",
+          "&:before": {
+            content: "''",
+            position: "absolute",
+            top: 0,
+            width: "100vw",
+            // left: 0,
+            // right: 0,
+            bottom: 0,
+            zIndex: -2,
+            background: `url(${wallPaper}) top center / cover no-repeat`,
+          },
+          "&:after": {
+            content: "''",
+            position: "absolute",
+            top: 0,
+            width: "100vw",
+            bottom: 0,
+            zIndex: -1,
+            backgroundColor: "#000",
+            opacity: 0.5,
+          },
         }}
       >
-        <Box className='flexColumn' sx={{ gap: 4, width: 1, border: 0 }}>
-          <Typography
-            className='flexRow'
-            variant='heading3'
+        <Typography
+          variant='heading2'
+          fontWeight={700}
+          fontSize={{ xxs: 73 }}
+          color='#fff'
+        >
+          Let's Talk Tailoring!
+        </Typography>
+        <Typography variant='label' color='#fff'>
+          Got Questions? Please, don't hesitate to get in touch with us
+        </Typography>
+      </Box>
+      <PageDiv>
+        <Container
+          maxWidth={false}
+          sx={{
+            border: 0,
+            gap: 5,
+            display: "grid",
+            gridTemplateColumns: "auto 1fr",
+            gridTemplateRows: "1fr",
+            justifyItems: "center",
+            width: 1,
+          }}
+        >
+          <Box
+            className='flexColumn'
+            gap={5}
+            maxWidth={"mobile"}
+            sx={{ border: 0 }}
+          >
+            <CompanyInfo alignItems='flex-start' />
+          </Box>
+          <Box
+            classNamae='flexColumn'
+            gap={1}
             sx={{
-              height: 75,
               width: 1,
-              backgroundColor: "#FAF0E6",
+              height: 1,
+              maxWidth: "sm",
+              border: 1,
             }}
           >
-            Contact Us
-          </Typography>
-          <Box>
-            <Typography className='flexRow' variant='p'>
-              Appointment: n/a
+            <Typography variant='subHeading' fontWeight={700}>
+              Send Message:
             </Typography>
+            <ContactForm />
           </Box>
-          <ContactForm />
-        </Box>
-        <Box className='flexColumn' sx={{ gap: 4, width: 1, border: 0 }}>
-          <Typography variant='heading3'>Thomas Mitchell Clothiers</Typography>
-          {contactInfo.map(contact => (
-            <Box className='flexColumn' sx={{ gap: 1 }}>
-              <Typography variant='label'>{contact.title}:</Typography>
-              <Typography variant='p'>{contact.content}</Typography>
-            </Box>
-          ))}
-        </Box>
-      </Container>
-    </PageDiv>
+        </Container>
+      </PageDiv>
+
+      <GoogleMapsEmbed />
+    </Box>
   );
 }
 
@@ -65,8 +148,7 @@ const GoogleMapsEmbed = () => {
     <Box
       sx={{
         width: 1,
-        minHeight: "450px",
-        height: 1,
+        height: 400,
 
         "& iframe": {
           width: 1,
@@ -81,7 +163,28 @@ const GoogleMapsEmbed = () => {
         allowFullScreen=''
         loading='lazy'
         referrerPolicy='no-referrer-when-downgrade'
-      ></iframe>
+      />
     </Box>
   );
 };
+
+function CompanyInfo({ alignItems = "center" }) {
+  return (
+    <>
+      {companyInfo.map(({ title, info }) => (
+        <Box
+          className='flexColumn'
+          gap={1}
+          sx={{ alignItems: alignItems, border: 0, width: 1 }}
+        >
+          <Typography variant='subHeading' fontWeight={700}>
+            {title}
+          </Typography>
+          {info.map(information => (
+            <Typography variant='p'>{information}</Typography>
+          ))}
+        </Box>
+      ))}
+    </>
+  );
+}

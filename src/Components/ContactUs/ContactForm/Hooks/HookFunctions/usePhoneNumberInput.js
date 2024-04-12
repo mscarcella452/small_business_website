@@ -23,7 +23,7 @@ const usePhoneNumberInput = () => {
     return true;
   };
 
-  return [isPhoneNumberValid, phoneNumberRef, error, setError];
+  return [phoneNumberRef, isPhoneNumberValid, error];
 };
 
 export default usePhoneNumberInput;

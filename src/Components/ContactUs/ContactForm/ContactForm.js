@@ -1,61 +1,79 @@
-import React from "react";
-import { Paper, Box, Typography, Container, Button } from "@mui/material";
+import { useRef } from "react";
+import {
+  Paper,
+  Box,
+  Typography,
+  Container,
+  Button,
+  IconButton,
+  TextField,
+} from "@mui/material";
+
 import FormInput from "./HelperComponents/FormInput";
 import {
   useInput,
   useEmailInput,
   usePhoneNumberInput,
 } from "./Hooks/InputCustomHooks";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import Appointment from "./Appointment";
+
+function isFormValid(validFunctionsArray) {
+  return validFunctionsArray.every(check => check === true);
+}
 
 function ContactForm() {
-  const [isFirstNameValid, firstNameRef, firstNameError] =
-    useInput("First Name");
-  const [isLastNameValid, lastNameRef, lastNameError] = useInput("Last Name");
-  const [isPhoneNumberValid, phoneNumberRef, phoneNumberError] =
-    usePhoneNumberInput();
-  const [isEmailValid, emailRef, emailError] = useEmailInput();
-  const [isMessageValid, messageRef, messageError] = useInput("Message");
+  const [nameRef, isNameValid, nameError] = useInput("Name");
+  const [phoneRef, isPhoneValid, phoneError] = usePhoneNumberInput();
+  const [emailRef, isEmailValid, emailError] = useEmailInput();
+  const [messageRef, isMessageValid, messageError] = useInput("Message");
+  const calendarRef = useRef();
 
-  const inputs = {
-    firstName: {
-      inputName: "first name",
-      ref: firstNameRef,
-      error: firstNameError,
-    },
-    lastName: {
-      inputName: "last name",
-      ref: lastNameRef,
-      error: lastNameError,
+  const textFields = {
+    name: {
+      name: "name",
+      placeholder: "Your Name*",
+      inputRef: nameRef,
+      error: nameError,
+      helperText: nameError,
+      variant: "standard",
     },
     phone: {
-      inputName: "phone",
-      ref: phoneNumberRef,
-      error: phoneNumberError,
+      name: "phone",
+      placeholder: "Phone Number",
+      inputRef: phoneRef,
+      error: phoneError,
+      helperText: phoneError,
+      variant: "standard",
     },
-    email: { inputName: "email", ref: emailRef, error: emailError },
+    email: {
+      name: "email",
+      placeholder: "Email Address*",
+      inputRef: emailRef,
+      error: emailError,
+      helperText: emailError,
+      variant: "standard",
+    },
     message: {
-      inputName: "message",
-      ref: messageRef,
+      name: "message",
+      placeholder: "Message...",
+      inputRef: messageRef,
       error: messageError,
+      helperText: messageError,
+      variant: "standard",
     },
   };
 
   const handleSubmit = () => {
-    // Validate fields and update error states
-    const firstNameValid = isFirstNameValid();
-    const lastNameValid = isLastNameValid();
-    const phoneNumberValid = isPhoneNumberValid();
-    const emailValid = isEmailValid();
-    const messageValid = isMessageValid();
-
     // Check if all error states are false
-    if (
-      firstNameValid &&
-      lastNameValid &&
-      phoneNumberValid &&
-      emailValid &&
-      messageValid
-    ) {
+    const isFormValid = [
+      isNameValid(),
+      isPhoneValid(),
+      isEmailValid(),
+      isMessageValid(),
+    ].every(check => check === true);
+
+    if (isFormValid) {
       console.log("all good!");
     }
   };
@@ -66,50 +84,35 @@ function ContactForm() {
         width: 1,
         height: 1,
         // border: 1,
-        gap: 2,
+        gap: 3,
       }}
     >
       <Box
-        className='flexColumn'
-        sx={{ width: 1, gap: 2, border: 0, height: 1 }}
+        sx={{
+          width: 1,
+          gap: 3,
+          display: "grid",
+          gridTemplateColumns: { xxs: "1fr", sm: "1fr 1fr" },
+          gridTemplateRows: "auto",
+        }}
       >
-        <Box
-          className='flexRow'
-          sx={{
-            width: 1,
-            gap: 2,
-            border: 0,
-            height: 1,
-            flexDirection: { xxs: "column", mobile: "row" },
-          }}
-        >
-          <FormInput inputData={inputs.firstName} />
-          <FormInput inputData={inputs.lastName} />
-        </Box>
-        <Box
-          className='flexRow'
-          sx={{
-            width: 1,
-            gap: 2,
-            border: 0,
-            height: 1,
-            flexDirection: {
-              xxs: "column",
-              sm: "row",
-              md: "column",
-              lg: "row",
-            },
-          }}
-        >
-          <FormInput inputData={inputs.phone} />
-          <FormInput inputData={inputs.email} />
-        </Box>
+        <TextField {...textFields.name} InputProps={{ sx: { height: 50 } }} />
+        <TextField {...textFields.phone} InputProps={{ sx: { height: 50 } }} />
       </Box>
 
-      <FormInput
-        inputData={inputs.message}
-        height={150}
-        inputProps={{ alignItems: "flex-start" }}
+      <TextField
+        {...textFields.email}
+        sx={{ width: 1 }}
+        InputProps={{
+          sx: { height: 50 },
+        }}
+      />
+      <TextField
+        {...textFields.message}
+        sx={{ width: 1 }}
+        InputProps={{
+          sx: { height: 150, display: "flex", alignItems: "flex-start" },
+        }}
       />
 
       <Button
@@ -119,7 +122,8 @@ function ContactForm() {
           backgroundColor: "primary.main",
           color: "#fff",
           height: 50,
-          width: 1,
+          // width: 1,
+          alignSelf: "flex-end",
         }}
       >
         Submit

@@ -4,8 +4,6 @@ const useInput = inputName => {
   const [error, setError] = useState("");
   const inputRef = useRef();
 
-  console.log(inputName);
-
   const isInputValid = () => {
     const input = inputRef.current.value.trim();
 
@@ -19,7 +17,7 @@ const useInput = inputName => {
     return true;
   };
 
-  return [isInputValid, inputRef, error];
+  return [inputRef, isInputValid, error];
 };
 
 export default useInput;

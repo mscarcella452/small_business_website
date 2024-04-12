@@ -10,6 +10,8 @@ import AboutUs from "./Components/AboutUs/AboutUs";
 import MissionStatement from "./Components/MissionStatement/MissionStatement";
 import CustomerReviews from "./Components/CustomerReviews/CustomerReviews";
 import ContactUs from "./Components/ContactUs/ContactUs";
+import Footer from "./Components/Footer/Footer";
+import GoogleMap from "./Components/GoogleMap/GoogleMap";
 
 function App() {
   return (
@@ -33,8 +35,9 @@ function App() {
           <Hours />
           <AboutUs />
           <CustomerReviews />
-          <ContactUs />
+          <Footer />
         </Box>
+        {/* <ContactUs /> */}
       </Paper>
     </ThemeProvider>
   );

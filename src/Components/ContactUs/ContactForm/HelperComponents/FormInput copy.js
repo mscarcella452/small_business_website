@@ -15,31 +15,19 @@ const adornmentIcons = {
   Appointment: <CalendarMonthIcon />,
 };
 
-const inputs = {};
-
-function FormInput({ props, inputProps, sx }) {
-  const {
-    inputName,
-    error,
-    ref,
-    label = null,
-    placeholder = true,
-    variant,
-    type,
-    size,
-    startAdornment,
-  } = props;
+function FormInput({ inputData, inputProps, height = 50 }) {
+  const { inputName, error, ref } = inputData;
   const [hidePassword, toggleHidePassword] = useToggle(true);
 
   return (
     <TextField
       inputRef={ref}
-      label={label && inputName}
-      placeholder={placeholder && inputName}
+      placeholder={inputName}
       name={inputName}
       error={error.length > 0}
       helperText={error}
-      type={type === "password" && hidePassword ? "password" : null}
+      size='small'
+      type={inputName === "password" && hidePassword ? "password" : null}
       InputProps={{
         sx: {
           height: 1,
@@ -50,10 +38,10 @@ function FormInput({ props, inputProps, sx }) {
 
         startAdornment: (
           <InputAdornment position='start' sx={{ marginRight: "10px" }}>
-            {startAdornment || ""}
+            {adornmentIcons[inputName]}
           </InputAdornment>
         ),
-        endAdornment: type === "password" && (
+        endAdornment: inputName === "password" && (
           <InputAdornment
             onClick={toggleHidePassword}
             position='end'
@@ -66,19 +54,17 @@ function FormInput({ props, inputProps, sx }) {
       sx={{
         padding: 0,
         width: 1,
-        height: 50,
+        height: height,
 
         "& ::placeholder": {
           textTransform: "capitalize",
         },
-
         "& .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline":
           {
-            borderColor: "lightgrey", // Change the outline color when focused here
+            borderColor: "info.main", // Change the outline color when focused here
           },
-        ...sx,
       }}
-      variant={variant || "outlined"}
+      variant='outlined'
     />
   );
 }
