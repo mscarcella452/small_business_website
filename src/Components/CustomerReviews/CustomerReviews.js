@@ -1,11 +1,17 @@
 // import react from "react";
 import { PageDiv } from "../../Helpers/HelperComponents";
-import { Container, Box, Typography } from "@mui/material";
-import StarIcon from "@mui/icons-material/Star";
+import { Container, Box } from "@mui/material";
 import { reviews, reviewBackgroundImage } from "./data";
-import Carousel from "../../Helpers/Carousel/Carousel";
+import CarouselContentWrapper from "../../Helpers/Carousel/CarouselContentWrapper";
+import { useCarousel } from "../../Helpers/Carousel/Hooks/CarouselHooks";
+import CarouselButton from "./Components/CarouselButton";
+import Review from "./Components/Review";
 
 function CustomerReviews() {
+  const [currentIndex, handlePrevSlide, handleNextSlide] = useCarousel(
+    reviews.length
+  );
+
   return (
     <PageDiv
       sx={{
@@ -33,74 +39,27 @@ function CustomerReviews() {
         },
       }}
     >
-      <Container maxWidth={false}>
-        <Carousel
-          CarouselButtonProps={{
-            color: "primary.main",
-          }}
+      <Container disableGutters maxWidth={false} sx={{ position: "relative" }}>
+        <CarouselButton onClick={handlePrevSlide} previousDirection />
+        <CarouselContentWrapper
+          currentIndex={currentIndex}
+          content={reviews}
+          opacity={0.15}
         >
-          {reviews.map((currentReview, index) => (
+          {(reviewContent, index) => (
             <Box
-              className='flexColumn'
               key={index}
               sx={{
-                gap: { xxs: 2, md: 3.5 },
-                padding: { xxs: 2, md: 3.5 },
-                position: "relative",
-                justifyContent: "space-between",
-
-                "&:before": {
-                  content: "''",
-                  position: "absolute",
-                  top: 0,
-                  height: 1,
-                  width: 1,
-                  backgroundColor: "secondary.dark",
-                  maxWidth: "md",
-                  zIndex: -1,
-                  borderRadius: 2,
-                  opacity: 0.9,
-                },
+                opacity: currentIndex === index ? 1 : 0.15,
+                transition: "opacity .5s ease",
               }}
             >
-              <Box
-                component='img'
-                src={currentReview.image}
-                alt={`${currentReview.name} customer review`}
-                sx={{
-                  width: { xxs: 150, sm: 200 },
-                  aspectRatio: 1,
-                  borderRadius: 2,
-                  objectFit: "cover",
-                  objectPosition: "top center",
-                }}
-              />
-
-              <Typography variant='heading3' sx={{ color: "secondary.light" }}>
-                {currentReview.name}
-              </Typography>
-
-              <Box className='flexRow review' gap={1}>
-                {Array.from({ length: currentReview.rating }).map(star => (
-                  <StarIcon
-                    sx={{
-                      color: "gold",
-                      fontSize: { xxs: 16, mobile: 20, md: 25 },
-                    }}
-                  />
-                ))}
-              </Box>
-
-              <Typography
-                variant='p'
-                lineHeight={2}
-                sx={{ color: "#FAF0E6", textAlign: "center", maxWidth: "sm" }}
-              >
-                {currentReview.review}
-              </Typography>
+              <Review reviewContent={reviewContent} />
             </Box>
-          ))}
-        </Carousel>
+          )}
+        </CarouselContentWrapper>
+
+        <CarouselButton onClick={handleNextSlide} />
       </Container>
     </PageDiv>
   );

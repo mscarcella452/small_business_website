@@ -19,10 +19,8 @@ function Carousel({ CarouselButtonProps, children }) {
     <Box
       sx={{
         width: 1,
-        // position: "relative",
+        position: "relative",
         overflow: "hidden",
-        border: 1,
-        borderColor: "teal",
       }}
     >
       <Box
@@ -34,11 +32,8 @@ function Carousel({ CarouselButtonProps, children }) {
           position: "absolute",
           top: { xxs: "2rem", md: 0 },
           left: 0,
-          // width: 75,
-          // height: 75,
+          right: 0,
           zIndex: 1,
-          border: 1,
-          borderColor: "red",
         }}
       >
         <CarouselButton

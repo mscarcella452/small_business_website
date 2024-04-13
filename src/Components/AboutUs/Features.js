@@ -8,7 +8,7 @@ const aboutBackgroundImage1 =
 const aboutBackgroundImage2 =
   "https://manofmany.com/wp-content/uploads/2017/05/Oscar-Hunt-Tailors-14-Best-Tailors-and-Bespoke-Suit-Shops-in-Melbourne.jpg";
 
-function AboutUs() {
+function Features({ contentOrder = -1 }) {
   const { aboutContent, storyContent } = content;
 
   return (
@@ -18,16 +18,20 @@ function AboutUs() {
     >
       <Box className='flexColumn' gap={2} marginBottom={5}>
         <Typography variant='label' sx={{ textTransform: "uppercase" }}>
-          BEHIND THE SEAMS
+          Thomas Mitchell Clothiers
         </Typography>
-        <Typography variant='heading2'>Discover Our Story</Typography>
+        <Typography variant='heading2'>Crafting Timeless Elegance</Typography>
       </Box>
       <Container
         sx={{
           width: 1,
           // border: 1,
           display: "grid",
-          gridTemplateColumns: { xxs: "1fr", md: "1fr .75fr" },
+          gridTemplateColumns: {
+            xxs: "1fr",
+            md: "1fr 1fr",
+            // md: contentOrder === -1 ? "1fr .75fr" : ".75fr 1fr",
+          },
           gridTemplateRows: { xxs: "auto 1fr", lg: "1fr" },
           justifyItems: "center",
           gap: "inherit",
@@ -37,11 +41,12 @@ function AboutUs() {
           className='flexColumn'
           sx={{
             width: 1,
+            order: contentOrder,
             // border: 0,
             gap: "inherit",
           }}
         >
-          {storyContent.content.map(description => (
+          {aboutContent.content.map(description => (
             <Typography variant='p'>{description}</Typography>
           ))}
         </Box>
@@ -52,4 +57,4 @@ function AboutUs() {
   );
 }
 
-export default AboutUs;
+export default Features;

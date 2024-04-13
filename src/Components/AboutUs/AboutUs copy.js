@@ -18,9 +18,9 @@ function AboutUs() {
     >
       <Box className='flexColumn' gap={2} marginBottom={5}>
         <Typography variant='label' sx={{ textTransform: "uppercase" }}>
-          BEHIND THE SEAMS
+          ABOUT US
         </Typography>
-        <Typography variant='heading2'>Discover Our Story</Typography>
+        <Typography variant='heading2'>Discover Timeless Elegance</Typography>
       </Box>
       <Container
         sx={{
@@ -41,12 +41,31 @@ function AboutUs() {
             gap: "inherit",
           }}
         >
-          {storyContent.content.map(description => (
+          {/* <Typography
+            className='flexRow'
+            variant='heading3'
+            sx={{
+              height: 75,
+              width: 1,
+              backgroundColor: "#FAF0E6",
+            }}
+          >
+            {aboutContent.title}
+          </Typography> */}
+          {aboutContent.content.map(description => (
             <Typography variant='p'>{description}</Typography>
           ))}
         </Box>
 
         <BoxImg src={aboutBackgroundImage1} alt='Tailor Store' />
+      </Container>
+      <Container sx={{ flexDirection: "column", gap: "inherit", border: 0 }}>
+        <Typography variant='heading3' sx={{ width: 1, textAlign: "left" }}>
+          {storyContent.title}
+        </Typography>
+        {storyContent.content.map(description => (
+          <Typography variant='p'>{description}</Typography>
+        ))}
       </Container>
     </PageDiv>
   );
